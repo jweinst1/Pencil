@@ -1,2 +1,3 @@
-# Pencil
-A generator for ESL-grammar questions
+# Farmer
+
+*A Modern, scalable poetry engine*
