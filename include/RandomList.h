@@ -8,7 +8,18 @@ class RandomStr
 public:
 RandomStr(const char* string);
 ~RandomStr();
+
+long size(void) const
+{
+        return _size;
+}
+
+const char* string(void) const
+{
+        return _str;
+}
 private:
+long _size;
 char* _str;
 };
 
