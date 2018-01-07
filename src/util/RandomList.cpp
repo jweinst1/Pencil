@@ -11,6 +11,15 @@ RandomStr::RandomStr(const char* string) : _size(0)
         *writer = '\0';
 }
 
+RandomStr::RandomStr(const RandomStr& string) : _size(string.size())
+{
+        _str = new char[_size + 1];
+        char* writer = _str;
+        const char* reader = string.string();
+        while((*writer++ = *reader++)) ;
+        *writer = '\0';
+}
+
 RandomStr::~RandomStr()
 {
         delete[] _str;

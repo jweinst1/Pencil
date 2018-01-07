@@ -7,6 +7,7 @@ class RandomStr
 {
 public:
 RandomStr(const char* string);
+RandomStr(const RandomStr& string);
 ~RandomStr();
 
 long size(void) const
