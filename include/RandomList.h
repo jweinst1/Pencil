@@ -2,6 +2,18 @@
 #define RANDOM_LIST_HEAD
 //Random List Header
 
+#include <cstdlib>
+#define RandomList_DEF_SZ 20
+
+//contains functions for getting random numbers
+struct RandNum
+{
+        static int gen(int max)
+        {
+                return std::rand() % max;
+        }
+};
+
 // String node class used for random list
 class RandomStr
 {
@@ -17,11 +29,6 @@ long size(void) const
         return _size;
 }
 
-bool state(void) const
-{
-        return _state;
-}
-
 const char* string(void) const
 {
         return _str;
@@ -29,14 +36,57 @@ const char* string(void) const
 private:
 long _size;
 char* _str;
-bool _state;
 };
+
 
 class RandomList
 {
+public:
+RandomList();
+RandomList(const char* name);
+~RandomList();
+
+void setName(const char* name)
+{
+        char* writer = _name;
+        while((*writer++ = *name++)) ;
+}
+
+const char* name(void) const
+{
+        return _name;
+}
+
+long size(void) const
+{
+        return _size;
+}
+
+long cap(void) const
+{
+        return _cap;
+}
+
+long space(void) const
+{
+        return _cap - _size;
+}
+
+bool isFull(void) const
+{
+        return (_cap - _size) == 0;
+}
+
+const RandomStr& front(void) const
+{
+        return *(_list[0]);
+}
 private:
+
 RandomStr** _list;
+char _name[50];
 long _size;
+long _cap;
 };
 
 #endif

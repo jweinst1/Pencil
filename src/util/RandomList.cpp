@@ -1,6 +1,6 @@
 #include "RandomList.h"
 
-RandomStr::RandomStr(const char* string) : _size(0), _state(true)
+RandomStr::RandomStr(const char* string) : _size(0)
 {
         const char* sPtr = string;
         // Allows room for null char
@@ -11,7 +11,7 @@ RandomStr::RandomStr(const char* string) : _size(0), _state(true)
         *writer = '\0';
 }
 
-RandomStr::RandomStr(const RandomStr& string) : _size(string.size()), _state(true)
+RandomStr::RandomStr(const RandomStr& string) : _size(string.size())
 {
         _str = new char[_size + 1];
         char* writer = _str;
@@ -22,8 +22,8 @@ RandomStr::RandomStr(const RandomStr& string) : _size(string.size()), _state(tru
 
 RandomStr& RandomStr::operator=(const RandomStr& other)
 {
+        if(this == &other) return *this;
         _size = other.size();
-        _state = other.state();
         _str = new char[_size + 1];
         char* writer = _str;
         const char* reader = other.string();
@@ -35,4 +35,23 @@ RandomStr& RandomStr::operator=(const RandomStr& other)
 RandomStr::~RandomStr()
 {
         delete[] _str;
+}
+
+
+RandomList::RandomList() : _size(0), _cap(RandomList_DEF_SZ)
+{
+        _name[0] = '\0';
+        _list = new RandomStr*[_cap];
+}
+
+RandomList::RandomList(const char* name) : _size(0), _cap(RandomList_DEF_SZ)
+{
+        _list = new RandomStr*[_cap];
+        char* writer = _name;
+        while((*writer++ = *name++)) ;
+}
+
+RandomList::~RandomList()
+{
+        delete[] _list;
 }
