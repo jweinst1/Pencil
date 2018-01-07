@@ -4,7 +4,12 @@
 
 class StrPart
 {
-
+public:
+StrPart(const char* string);
+~StrPart();
+private:
+char* _str;
+StrPart* _next;
 };
 
 #endif
