@@ -53,5 +53,21 @@ RandomList::RandomList(const char* name) : _size(0), _cap(RandomList_DEF_SZ)
 
 RandomList::~RandomList()
 {
+        for(long i=0; i<_size; i++)
+        {
+                delete _list[i];
+        }
         delete[] _list;
+}
+
+void RandomList::expand(int factor)
+{
+        _cap *= factor;
+        RandomStr** newlist = new RandomStr*[_cap];
+        for(long i=0; i<_size; i++)
+        {
+                newlist[i] = _list[i];
+        }
+        delete[] _list;
+        _list = newlist;
 }

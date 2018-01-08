@@ -81,12 +81,27 @@ const RandomStr& front(void) const
 {
         return *(_list[0]);
 }
+
+const RandomStr& get(void) const
+{
+        return *(_list[RandNum::gen(_size)]);
+}
+
+void push(const char* string)
+{
+        if(isFull()) expand();
+        _list[_size] = new RandomStr(string);
+        _size++;
+}
 private:
 
 RandomStr** _list;
 char _name[50];
 long _size;
 long _cap;
+
+private:
+void expand(int factor = 2);
 };
 
 #endif

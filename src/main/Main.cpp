@@ -6,5 +6,8 @@ int main(int argc, char const *argv[]) {
         std::cout << foo.string() << std::endl;
         RandomStr doo = foo;
         std::cout << (*(doo.string() + doo.size()) == '\0') << std::endl;
+        RandomList f("words");
+        f.push("fooo");
+        f.push("dooo");
         return 0;
 }
