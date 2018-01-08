@@ -37,6 +37,21 @@ RandomStr::~RandomStr()
         delete[] _str;
 }
 
+bool RandomStr::operator==(const RandomStr& other) const
+{
+        if(_size != other.size()) return false;
+        else
+        {
+                const char* lhs = _str;
+                const char* rhs = other.string();
+                while(*lhs && *rhs)
+                {
+                        if(*lhs++ != *rhs++) return false;
+                }
+                return true;
+        }
+}
+
 
 RandomList::RandomList() : _size(0), _cap(RandomList_DEF_SZ)
 {

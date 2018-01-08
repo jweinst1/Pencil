@@ -23,6 +23,11 @@ RandomStr(const RandomStr& string);
 ~RandomStr();
 
 RandomStr& operator= (const RandomStr& other);
+bool operator ==(const RandomStr& other) const;
+bool operator !=(const RandomStr& other) const
+{
+        return !(*this == other);
+}
 
 long size(void) const
 {
