@@ -2,14 +2,18 @@
 #define STR_STREAM_HEAD
 // Str Stream Header
 #include <iostream>
+#include <fstream>
 
-
+/** StrStream Utility Class
+ * Used as a custom C-str linked list,
+ * Allows for fast linear storage of C-strings without copying or reallocating memory
+ */
 class StrStream
 {
 public:
 struct Node
 {
-private:
+public:
         Node(const char* string = "") : _next(nullptr), _size(0)
         {
                 const char* counter = string;
@@ -44,6 +48,7 @@ StrStream();
 
 StrStream& operator<<(const char* string);
 
+// prints to stdout
 void print(void) const;
 
 bool isEmpty(void) const
@@ -55,6 +60,9 @@ bool isSing(void) const
 {
         return _back == _front;
 }
+
+// writes to file.
+bool writeToFile(const char* filename) const;
 
 private:
 Node* _front;

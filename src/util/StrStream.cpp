@@ -38,3 +38,20 @@ void StrStream::print(void) const
                 std::cout << nPtr->string();
         }
 }
+
+bool StrStream::writeToFile(const char* filename) const
+{
+        std::ofstream fileStream;
+        fileStream.open(filename);
+        if(fileStream.is_open())
+        {
+                for(Node* nPtr = _front; nPtr != nullptr; nPtr = nPtr->_next)
+                {
+                        fileStream << nPtr->string();
+                }
+                fileStream.close();
+                return true;
+        }
+        else return false;
+
+}
