@@ -3,20 +3,14 @@
 
 #include <string>
 #include "RandomList.h"
+#include "CharBuf.h"
 
-
-// custom-size buffer for parsing
-template<long size>
-class CharBuf
+struct ParseUtil
 {
-public:
-long len(void) const
-{
-        return _len;
-}
-private:
-long _len;
-char _buf[size];
+        static std::string readFile(const char* fileName);
 };
+
+
+
 
 #endif //PARSE_WORD_LIST

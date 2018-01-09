@@ -44,6 +44,11 @@ char& operator[] (long index)
 {
         return _buf[index % size];
 }
+
+void clear(void)
+{
+        for(char* clr = _buf; *clr; clr++) *clr = '\0';
+}
 private:
 long _len;
 char _buf[size + 1];
